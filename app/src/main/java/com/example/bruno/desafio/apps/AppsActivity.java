@@ -42,10 +42,14 @@ public class AppsActivity extends AppCompatActivity implements AppsView {
         setContentView(R.layout.activity_apps);
 
         ButterKnife.bind(this);
-        //Cria o presenter
+
+        //Faz a recuperação da string do Json que está armazenada no dispositivo
         SharedPreferences shared = getSharedPreferences("apps_json",Context.MODE_PRIVATE);
         String jsonApps = (shared.getString("apps_entity_json", ""));
+
+        //Cria o presenter
         appsPresenter = new AppsPresenter(this);
+
         //Chama o presenter para atualizar o Recycler View com as Acoes Sociais
         appsPresenter.updateList(jsonApps);
     }
@@ -60,7 +64,7 @@ public class AppsActivity extends AppCompatActivity implements AppsView {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-
+            //caso faça o clique no botão da action bar
             case R.id.action_download:
                 //salvar as informações dos filmes nas SharedPreferences
                 appsPresenter.saveApps();
@@ -70,6 +74,7 @@ public class AppsActivity extends AppCompatActivity implements AppsView {
         return super.onOptionsItemSelected(item);
     }
 
+    //Verifica se o aparelho está conectado à internet
     @Override
     public boolean conectado(){
         ConnectivityManager cm =(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

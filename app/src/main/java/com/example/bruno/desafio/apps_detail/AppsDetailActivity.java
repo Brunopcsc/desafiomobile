@@ -79,8 +79,8 @@ public class AppsDetailActivity extends AppCompatActivity {
 
     }
 
+    //Mostra os detalhes da Ação Social clicada anteriormente
     public void showDetails(String nome,String imagem,String descricao,String site ) {
-        //Mostra os detalhes da Ação Social clicada anteriormente
         showLoading();
         //Seta as Views de acordo com os campos recebidos
         tvDescription.setText(descricao);

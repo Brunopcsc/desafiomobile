@@ -31,7 +31,7 @@ public class AppsPresenter {
 
     //Atualiza a lista com as Ações Sociais
     void updateList(String jsonApps){
-            //Caso já tenha dados salvos em memória faz o carregamento
+            //Caso já tenha dados salvos em memória e não haja conexão,faz o carregamento
             boolean conexao = appsView.conectado();
             if(jsonApps!= null && !conexao){
                 appsView.showMessage("Trabalhando com dados offline!");
@@ -39,6 +39,7 @@ public class AppsPresenter {
                 appsList=appsListEntity.getApps();
                 appsView.updateList(appsList);
             }
+            //Caso possua conexão ou nao contenha o Json salvo no dispositivo tenta recuperar pela API
             else {
                 //Pega a instância da API
                 final AppsApi appsApi = AppsApi.getInstance();
