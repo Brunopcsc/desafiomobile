@@ -1,6 +1,5 @@
 package com.example.bruno.desafio.network.api;
 
-import com.example.bruno.desafio.entity.AppsDetailEntity;
 import com.example.bruno.desafio.entity.AppsListEntity;
 import com.example.bruno.desafio.network.service.AppService;
 import com.google.gson.FieldNamingPolicy;
